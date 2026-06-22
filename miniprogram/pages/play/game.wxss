@@ -1,0 +1,262 @@
+.game-page {
+  padding: 20rpx;
+  background: #1a1a2e;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== 玩家区域 ===== */
+.player-area {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16rpx 8rpx;
+}
+
+.player-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.player-info.right-align {
+  text-align: right;
+  align-items: flex-end;
+}
+
+.player-label {
+  font-size: 22rpx;
+  color: #aaa;
+}
+
+.player-name {
+  font-size: 28rpx;
+  color: #eee;
+  font-weight: 500;
+}
+
+/* ===== 棋钟 ===== */
+.clock-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rpx;
+  background: #16213e;
+  border-radius: 14rpx;
+  padding: 10rpx 28rpx;
+  border: 2rpx solid rgba(255, 255, 255, 0.06);
+  min-width: 160rpx;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.clock-area.red-clock {
+  border-color: rgba(192, 57, 43, 0.3);
+}
+
+.clock-area.black-clock {
+  border-color: rgba(44, 62, 80, 0.3);
+}
+
+.clock-time {
+  font-size: 44rpx;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+  color: #eee;
+  letter-spacing: 2rpx;
+  transition: color 0.3s;
+}
+
+.clock-label {
+  font-size: 20rpx;
+  color: #aaa;
+}
+
+/* 紧迫状态（最后30秒） */
+.clock-area.urgent {
+  background: rgba(192, 57, 43, 0.08);
+  border-color: #e94560;
+  animation: clockFlash 1s ease-in-out infinite;
+}
+
+.clock-area.urgent .clock-time {
+  color: #e74c3c;
+}
+
+@keyframes clockFlash {
+  0%, 100% {
+    box-shadow: 0 0 0rpx rgba(231, 76, 60, 0);
+  }
+  50% {
+    box-shadow: 0 0 24rpx rgba(231, 76, 60, 0.3);
+  }
+}
+
+/* ===== 回合指示器 ===== */
+.turn-indicator {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  font-size: 26rpx;
+  color: #aaa;
+  margin: 12rpx 0;
+  padding: 8rpx 24rpx;
+  background: #0f3460;
+  border-radius: 12rpx;
+}
+
+.turn-indicator.my-turn {
+  color: #d4a843;
+  border: 2rpx solid #d4a843;
+}
+
+/* 开局提示 */
+.opening-tip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8rpx;
+}
+
+.opening-tip.hidden {
+  display: none;
+}
+
+.opening-text {
+  font-size: 24rpx;
+  color: #ff8c00;
+  background: rgba(255, 140, 0, 0.1);
+  padding: 4rpx 20rpx;
+  border-radius: 10rpx;
+  border: 2rpx solid rgba(255, 140, 0, 0.3);
+  font-family: "Ma Shan Zheng", "STKaiti", "KaiTi", serif;
+  letter-spacing: 2rpx;
+}
+
+/* ===== 棋盘 ===== */
+.chess-board {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #e8c06f;
+  border-radius: 16rpx;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.4);
+}
+
+/* ===== 操作按钮 ===== */
+.game-actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20rpx;
+  margin-top: 20rpx;
+}
+
+.game-actions.waiting {
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  flex: 1;
+  height: 72rpx;
+  line-height: 72rpx;
+  font-size: 28rpx;
+  background: #0f3460;
+  color: #eee;
+  border-radius: 12rpx;
+  border: 2rpx solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-family: "Ma Shan Zheng", "STKaiti", "KaiTi", serif;
+  letter-spacing: 2rpx;
+}
+
+.action-btn.share-btn {
+  flex: 0 0 auto;
+  padding: 0 20rpx;
+  background: linear-gradient(135deg, #e94560, #c0392b);
+  color: white;
+  border: none;
+}
+
+.action-btn.danger {
+  color: #e94560;
+  border-color: #e94560;
+}
+
+/* ===== 游戏结束弹窗 ===== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+.result-panel {
+  width: 72%;
+  max-width: 520rpx;
+  background: #16213e;
+  border-radius: 24rpx;
+  padding: 48rpx 32rpx 36rpx;
+  border: 2rpx solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 16rpx 48rpx rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.result-icon {
+  font-size: 72rpx;
+  margin-bottom: 8rpx;
+}
+
+.result-title {
+  font-family: "Ma Shan Zheng", "STKaiti", "KaiTi", serif;
+  font-size: 48rpx;
+  color: #d4a843;
+  margin-bottom: 12rpx;
+  letter-spacing: 6rpx;
+}
+
+.result-desc {
+  font-size: 28rpx;
+  color: #aaa;
+  margin-bottom: 24rpx;
+}
+
+.result-stats {
+  width: 100%;
+  margin-bottom: 28rpx;
+}
+
+.stat-line {
+  display: block;
+  text-align: center;
+  font-size: 22rpx;
+  color: #aaa;
+  font-family: "Courier New", monospace;
+}
+
+.back-btn {
+  width: 80%;
+  height: 76rpx;
+  line-height: 76rpx;
+  border-radius: 14rpx;
+  background: linear-gradient(135deg, #e94560, #c0392b);
+  color: white;
+  border: none;
+  font-size: 30rpx;
+  font-family: "Ma Shan Zheng", "STKaiti", "KaiTi", serif;
+  letter-spacing: 4rpx;
+  text-align: center;
+}
