@@ -1,0 +1,35 @@
+<view class="container">
+  <view class="title-area">
+    <text class="title">中國象棋</text>
+    <text class="subtitle">即時對戰</text>
+  </view>
+  <view class="board-icon">
+    <text class="chess-char">象</text>
+  </view>
+
+  <!-- 用户信息区 -->
+  <view class="user-section" bindtap="onViewProfile">
+    <view class="user-avatar">{{userInitial}}</view>
+    <view class="user-info">
+      <text class="user-nickname">{{nickname}}</text>
+      <text class="user-stats" wx:if="{{totalGames > 0}}">{{totalGames}}局 · {{winGames}}勝 · 勝率{{winRate}}%</text>
+      <text class="user-stats" wx:else>暫無對局記錄</text>
+    </view>
+    <text class="user-arrow">›</text>
+  </view>
+
+  <view class="menu">
+    <button class="btn btn-primary" bindtap="onMatch">快速配對</button>
+    <button class="btn btn-secondary" bindtap="onCreateRoom">創建房間</button>
+    <button class="btn btn-secondary" bindtap="onJoinRoom">加入房間</button>
+    <button class="btn btn-ai" bindtap="onVsAI">人機對戰</button>
+    <button class="btn btn-setting" bindtap="onOpenSettings">設置</button>
+    <button class="btn btn-replay" bindtap="onReplay">棋譜</button>
+  </view>
+  <view class="bottom-bar">
+    <view class="status-bar">
+      <text class="status-dot {{wsConnected ? 'online' : 'offline'}}"></text>
+      <text class="status-text">{{wsConnected ? '服務器已連接' : '連接中...'}}</text>
+    </view>
+  </view>
+</view>
