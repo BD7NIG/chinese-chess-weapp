@@ -1,0 +1,14 @@
+{
+  "name": "chinese-chess-server",
+  "version": "1.0.0",
+  "description": "中国象棋对战 WebSocket 服务器",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js"
+  },
+  "dependencies": {
+    "uuid": "^14.0.1",
+    "ws": "^8.21.0"
+  }
+}
