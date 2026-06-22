@@ -1,0 +1,263 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #1a1a2e, #16213e, #0f3460);
+  padding-bottom: 40rpx;
+}
+
+/* 顶部栏 */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 30rpx;
+  position: relative;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  padding: 12rpx;
+}
+
+.back-arrow {
+  font-size: 40rpx;
+  color: #d4a843;
+  line-height: 1;
+}
+
+.back-text {
+  font-size: 28rpx;
+  color: #d4a843;
+  font-family: "Ma Shan Zheng", "STKaiti", "KaiTi", serif;
+}
+
+.header-title {
+  font-size: 32rpx;
+  color: #eee;
+  font-family: "Ma Shan Zheng", "STKaiti", "KaiTi", serif;
+  letter-spacing: 4rpx;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.header-right {
+  width: 100rpx;
+}
+
+/* 统计卡片 */
+.stats-card {
+  margin: 10rpx 30rpx 30rpx;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 20rpx;
+  padding: 36rpx 30rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2rpx solid rgba(255, 255, 255, 0.04);
+}
+
+.stats-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d4a843, #b8943a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44rpx;
+  color: #3a2a1a;
+  font-weight: 900;
+  margin-bottom: 12rpx;
+  box-shadow: 0 4rpx 16rpx rgba(212, 168, 67, 0.3);
+}
+
+.stats-nickname {
+  font-size: 32rpx;
+  color: #eee;
+  margin-bottom: 30rpx;
+  font-family: "Ma Shan Zheng", "STKaiti", "KaiTi", serif;
+  letter-spacing: 2rpx;
+}
+
+.stats-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6rpx;
+}
+
+.stat-num {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #eee;
+}
+
+.stat-num.win {
+  color: #2ecc71;
+}
+
+.stat-num.lose {
+  color: #e74c3c;
+}
+
+.stat-num.draw {
+  color: #f39c12;
+}
+
+.stat-label {
+  font-size: 22rpx;
+  color: #aaa;
+}
+
+/* 胜率颜色 */
+.stat-num.high {
+  color: #2ecc71;
+  text-shadow: 0 0 12rpx rgba(46, 204, 113, 0.4);
+}
+
+.stat-num.mid {
+  color: #f39c12;
+  text-shadow: 0 0 12rpx rgba(243, 156, 18, 0.3);
+}
+
+.stat-num.low {
+  color: #e74c3c;
+  text-shadow: 0 0 12rpx rgba(231, 76, 60, 0.3);
+}
+
+/* 胜率条 */
+.rate-bar {
+  width: 100%;
+  height: 8rpx;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4rpx;
+  margin-top: 24rpx;
+  overflow: hidden;
+}
+
+.rate-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #e94560, #2ecc71);
+  border-radius: 4rpx;
+  transition: width 0.3s;
+}
+
+/* 最近对局 */
+.records-section {
+  padding: 0 30rpx;
+}
+
+.section-title {
+  font-size: 28rpx;
+  color: #aaa;
+  margin-bottom: 20rpx;
+  display: block;
+  letter-spacing: 2rpx;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80rpx 0;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+  opacity: 0.5;
+}
+
+.empty-text {
+  font-size: 30rpx;
+  color: #888;
+  margin-bottom: 10rpx;
+}
+
+.empty-hint {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.loading-state {
+  text-align: center;
+  padding: 40rpx 0;
+  color: #888;
+  font-size: 26rpx;
+}
+
+/* 对局记录项 */
+.record-item {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  padding: 22rpx 20rpx;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 14rpx;
+  margin-bottom: 12rpx;
+  border: 2rpx solid rgba(255, 255, 255, 0.02);
+}
+
+.record-icon {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.record-icon.icon-win {
+  background: rgba(46, 204, 113, 0.2);
+  color: #2ecc71;
+}
+
+.record-icon.icon-lose {
+  background: rgba(231, 76, 60, 0.2);
+  color: #e74c3c;
+}
+
+.record-icon.icon-draw {
+  background: rgba(243, 156, 18, 0.2);
+  color: #f39c12;
+}
+
+.record-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+  min-width: 0;
+}
+
+.record-opponent {
+  font-size: 28rpx;
+  color: #ddd;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.record-meta {
+  font-size: 22rpx;
+  color: #888;
+}
+
+.record-time {
+  font-size: 28rpx;
+  color: #d4a843;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
