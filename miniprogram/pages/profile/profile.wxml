@@ -1,0 +1,70 @@
+<view class="container">
+  <view class="header">
+    <view class="back-btn" bindtap="onBack">
+      <text class="back-arrow">‹</text>
+      <text class="back-text">返回</text>
+    </view>
+    <text class="header-title">我的戰績</text>
+    <view class="header-right"></view>
+  </view>
+
+  <!-- 统计卡片 -->
+  <view class="stats-card">
+    <view class="stats-avatar">{{nickname ? nickname[0] : '?'}}</view>
+    <text class="stats-nickname">{{nickname}}</text>
+
+    <view class="stats-row">
+      <view class="stat-item">
+        <text class="stat-num">{{totalGames}}</text>
+        <text class="stat-label">總對局</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-num win">{{winGames}}</text>
+        <text class="stat-label">勝</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-num lose">{{loseGames}}</text>
+        <text class="stat-label">負</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-num draw">{{drawGames}}</text>
+        <text class="stat-label">和</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-num {{winRateClass}}">{{winRate}}%</text>
+        <text class="stat-label">勝率</text>
+      </view>
+    </view>
+
+    <!-- 胜率条 -->
+    <view class="rate-bar">
+      <view class="rate-fill" style="width: {{winRate}}%"></view>
+    </view>
+  </view>
+
+  <!-- 最近对局 -->
+  <view class="records-section">
+    <text class="section-title">最近對局</text>
+
+    <view wx:if="{{records.length === 0}}" class="empty-state">
+      <text class="empty-icon">📊</text>
+      <text class="empty-text">暫無對局記錄</text>
+      <text class="empty-hint">開始一盤對局，戰績將會自動記錄</text>
+    </view>
+
+    <view wx:for="{{records}}" wx:key="timestamp" class="record-item">
+      <view class="record-icon {{item.result === 'win' ? 'icon-win' : item.result === 'lose' ? 'icon-lose' : 'icon-draw'}}">
+        <text>{{item.result === 'win' ? '勝' : item.result === 'lose' ? '負' : '和'}}</text>
+      </view>
+      <view class="record-info">
+        <text class="record-opponent">{{item.opponentName}}</text>
+        <text class="record-meta">{{item.date}} · {{item.moveCount}}手{{item.reason ? ' · ' + item.reason : ''}}</text>
+      </view>
+      <text class="record-time">{{item.myTime}}</text>
+    </view>
+
+    <view wx:if="{{loading}}" class="loading-state">
+      <text>載入中...</text>
+    </view>
+  </view>
+</view>
