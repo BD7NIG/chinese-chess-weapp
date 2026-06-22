@@ -1,0 +1,298 @@
+page {
+  --bg-dark: #1a1a2e;
+  --bg-medium: #16213e;
+  --bg-light: #0f3460;
+  --accent: #e94560;
+  --gold: #d4a843;
+  --text-primary: #eee;
+  --text-secondary: #aaa;
+  --board-bg: #e8c06f;
+}
+
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #1a1a2e, #16213e);
+  padding: 30rpx 30rpx 40rpx;
+  box-sizing: border-box;
+}
+
+/* ===== 顶部标题 ===== */
+.page-header {
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.page-title {
+  font-family: "Ma Shan Zheng", "STKaiti", "KaiTi", serif;
+  font-size: 48rpx;
+  color: #d4a843;
+  letter-spacing: 8rpx;
+}
+
+.page-subtitle {
+  font-size: 24rpx;
+  color: #aaa;
+  display: block;
+  margin-top: 6rpx;
+  letter-spacing: 4rpx;
+}
+
+/* ===== 战绩统计 ===== */
+.stats-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #16213e;
+  border-radius: 16rpx;
+  padding: 20rpx 8rpx;
+  margin-bottom: 24rpx;
+  border: 2rpx solid rgba(255, 255, 255, 0.04);
+}
+
+.stats-card.hidden {
+  display: none;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rpx;
+}
+
+.stat-num {
+  font-size: 40rpx;
+  font-weight: bold;
+  font-family: "Courier New", monospace;
+}
+
+.stat-item.total .stat-num { color: #eee; }
+.stat-item.win .stat-num { color: #2ecc71; }
+.stat-item.lose .stat-num { color: #e94560; }
+.stat-item.draw .stat-num { color: #d4a843; }
+.stat-item.rate .stat-num { color: #d4a843; }
+.stat-item.rate .stat-num.high { color: #2ecc71; }
+.stat-item.rate .stat-num.mid { color: #d4a843; }
+.stat-item.rate .stat-num.low { color: #e94560; }
+
+.stat-label {
+  font-size: 22rpx;
+  color: #aaa;
+}
+
+.stat-divider {
+  width: 2rpx;
+  height: 50rpx;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ===== 空状态 ===== */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120rpx 0;
+}
+
+.empty-state.hidden {
+  display: none;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+  opacity: 0.4;
+}
+
+.empty-text {
+  font-size: 30rpx;
+  color: #aaa;
+  margin-bottom: 12rpx;
+}
+
+.empty-hint {
+  font-size: 24rpx;
+  color: rgba(170, 170, 170, 0.5);
+  text-align: center;
+}
+
+/* ===== 记录列表 ===== */
+.record-list {
+  max-height: 75vh;
+}
+
+.record-card {
+  background: #16213e;
+  border-radius: 16rpx;
+  padding: 24rpx 20rpx;
+  margin-bottom: 16rpx;
+  border: 2rpx solid rgba(255, 255, 255, 0.04);
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.record-icon {
+  font-size: 40rpx;
+  width: 60rpx;
+  text-align: center;
+}
+
+.record-info {
+  flex: 1;
+}
+
+.record-title {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  font-size: 28rpx;
+  color: #eee;
+}
+
+.record-title .lose {
+  color: #e94560;
+}
+
+.record-title .draw {
+  color: #d4a843;
+}
+
+.record-color {
+  font-size: 22rpx;
+  padding: 2rpx 12rpx;
+  border-radius: 6rpx;
+}
+
+.red-tag {
+  color: #e74c3c;
+  background: rgba(231, 76, 60, 0.1);
+  border: 2rpx solid rgba(231, 76, 60, 0.2);
+}
+
+.black-tag {
+  color: #aaa;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2rpx solid rgba(255, 255, 255, 0.1);
+}
+
+.record-count {
+  font-size: 22rpx;
+  color: #aaa;
+  font-family: monospace;
+}
+
+.record-meta {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 6rpx;
+}
+
+.record-date {
+  font-size: 22rpx;
+  color: #aaa;
+}
+
+.record-reason {
+  font-size: 22rpx;
+  color: #e94560;
+}
+
+.record-arrow {
+  font-size: 40rpx;
+  color: #aaa;
+  opacity: 0.4;
+}
+
+/* ===== 回放模式 ===== */
+.replay-mode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.replay-mode.hidden {
+  display: none;
+}
+
+.replay-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.back-btn {
+  font-size: 26rpx;
+  color: #d4a843;
+  background: none;
+  border: 2rpx solid rgba(212, 168, 67, 0.3);
+  padding: 6rpx 20rpx;
+  border-radius: 10rpx;
+  height: auto;
+  line-height: normal;
+}
+
+.back-btn::after {
+  border: none;
+}
+
+.replay-step {
+  font-size: 28rpx;
+  color: #eee;
+  font-family: monospace;
+}
+
+.replay-board {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #e8c06f;
+  border-radius: 16rpx;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.4);
+}
+
+.replay-controls {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  margin-top: 24rpx;
+}
+
+.ctrl-btn {
+  width: 90rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 30rpx;
+  background: #0f3460;
+  color: #eee;
+  border-radius: 12rpx;
+  border: 2rpx solid rgba(255, 255, 255, 0.06);
+}
+
+.ctrl-btn.primary {
+  width: 110rpx;
+  background: linear-gradient(135deg, #e94560, #c0392b);
+  color: white;
+  border: none;
+}
+
+.replay-info {
+  margin-top: 20rpx;
+  text-align: center;
+}
+
+.info-line {
+  font-size: 28rpx;
+  color: #eee;
+  font-family: "Ma Shan Zheng", "STKaiti", "KaiTi", serif;
+  letter-spacing: 2rpx;
+}
+
+.info-status {
+  display: block;
+  font-size: 24rpx;
+  color: #d4a843;
+  margin-top: 8rpx;
+}
