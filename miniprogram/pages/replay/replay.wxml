@@ -1,0 +1,89 @@
+<view class="container">
+  <!-- ===== 列表模式 ===== -->
+  <view class="page-header">
+    <text class="page-title"> 棋 譜</text>
+    <text class="page-subtitle">對局記錄</text>
+  </view>
+
+  <!-- 战绩统计 -->
+  <view class="stats-card {{records.length > 0 ? '' : 'hidden'}}">
+    <view class="stat-item total">
+      <text class="stat-num">{{stats.total}}</text>
+      <text class="stat-label">總局</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item win">
+      <text class="stat-num">{{stats.win}}</text>
+      <text class="stat-label">勝</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item lose">
+      <text class="stat-num">{{stats.lose}}</text>
+      <text class="stat-label">負</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item draw">
+      <text class="stat-num">{{stats.draw}}</text>
+      <text class="stat-label">和</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item rate">
+      <text class="stat-num {{stats.winRateClass}}">{{stats.winRate}}%</text>
+      <text class="stat-label">勝率</text>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state {{records.length > 0 ? 'hidden' : ''}}">
+    <text class="empty-icon"></text>
+    <text class="empty-text">暫無對局記錄</text>
+    <text class="empty-hint">完成一局對弈後，棋譜會自動保存在這裡</text>
+  </view>
+
+  <!-- 列表 -->
+  <scroll-view class="record-list" scroll-y="{{true}}" wx:if="{{records.length > 0 && !showDetail}}">
+    <view class="record-card" wx:for="{{records}}" wx:key="id" bindtap="onSelectRecord" data-id="{{item.id}}">
+      <view class="record-icon">
+        <text wx:if="{{item.result === 'win'}}"></text>
+        <text wx:elif="{{item.result === 'lose'}}"></text>
+        <text wx:else></text>
+      </view>
+      <view class="record-info">
+        <view class="record-title">
+          <text wx:if="{{item.result === 'win'}}">勝</text>
+          <text wx:elif="{{item.result === 'lose'}}" class="lose">負</text>
+          <text wx:else class="draw">和</text>
+          <text class="record-color {{item.myColor === 'red' ? 'red-tag' : 'black-tag'}}">{{item.myColor === 'red' ? '紅方' : '黑方'}}</text>
+          <text class="record-count">{{item.moveCount}} 手</text>
+        </view>
+        <view class="record-meta">
+          <text class="record-date">{{item.date}}</text>
+          <text class="record-reason" wx:if="{{item.reason}}">{{item.reason}}</text>
+        </view>
+      </view>
+      <view class="record-arrow">></view>
+    </view>
+  </scroll-view>
+
+  <!-- ===== 回放模式 ===== -->
+  <view class="replay-mode {{showDetail ? '' : 'hidden'}}">
+    <view class="replay-header">
+      <button class="back-btn" bindtap="onBackToList">- 返回</button>
+      <text class="replay-step">{{currentStep + 1}} / {{totalMoves}}</text>
+    </view>
+
+    <canvas class="replay-board" type="2d" id="replayCanvas"></canvas>
+
+    <view class="replay-controls">
+      <button class="ctrl-btn" bindtap="onFirst"></button>
+      <button class="ctrl-btn primary" bindtap="onPrev"></button>
+      <button class="ctrl-btn primary" bindtap="onNext"></button>
+      <button class="ctrl-btn" bindtap="onLast"></button>
+    </view>
+
+    <view class="replay-info">
+      <text class="info-line">{{currentMoveDesc}}</text>
+      <text class="info-status" wx:if="{{currentStep === totalMoves - 1 && totalMoves > 0}}">— 終局 —</text>
+    </view>
+  </view>
+</view>
